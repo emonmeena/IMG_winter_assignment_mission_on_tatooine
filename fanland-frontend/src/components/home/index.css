@@ -1,0 +1,42 @@
+ /* ::-webkit-scrollbar {
+    width: 200px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: ;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }  */
+
+nav{
+height: 5vh;
+}
+.clubs-container {
+  height: 95vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 9fr));
+  grid-gap: 10px;
+  overflow-y: auto;
+}
+.main-container{
+    height: 100vh;
+}
+/* colors */
+.bg-color-primary{
+  background-color:  	#212121;
+}
+.bg-color-secondary{
+  background-color: rgb(16, 16, 16);
+}
+.bg-color-tertiary{
+  background-color: #535353;
+}
+.bg-color-light{
+  background-color:  	#b3b3b3;
+}
