@@ -1,4 +1,4 @@
-import Home from "./components/home";
+import Main from "./components/main";
 import Auth from "./components/auth";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function App() {
           <Auth />
         </Route>
         <Route exact path="/">
-          <Home />
+          <Main />
         </Route>
       </Switch>
     </Router>

@@ -1,0 +1,19 @@
+.message-container{
+    height: 90vh;
+    width: 70vw;
+    overflow-y: auto;
+    display: inline-block;
+}
+.message-box{
+background-color: grey;
+/* min-width: fit-content; */
+max-width: 400px;
+clear: both;
+margin-bottom: 10px;
+}
+.send{
+    float: right;
+}
+.receive{
+    float: left;
+}
