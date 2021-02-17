@@ -1,23 +1,39 @@
-const io = require("socket.io")(8000);
+const app = require("express")();
+const http = require("http").createServer(app);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "*",
+  },
+});
 const users = {};
 
 io.on("connection", (socket) => {
-  socket.on("new-user-joined", (userName) => {
-    users[socket.id] = userName;
-    socket.broadcast.emit("user-joined", userName);
-  });
+  // socket.on("new-user-joined", (userName) => {
+  //   users[socket.id] = userName;
+  //   socket.broadcast.emit("user-joined", userName);
+  // });
 
-  socket.on("send", (message) => {
-    socket.broadcast.emit("receive", {
-      message: message,
-      userName: users[socket.id],
-    });
+  // socket.on("send", (message) => {
+  //   socket.broadcast.emit("receive", {
+  //     message: message,
+  //     userName: users[socket.id],
+  //   });
+  // });
+  // socket.on("disconnect", (message) => {
+  //   socket.broadcast.emit("leave", {
+  //     message: message,
+  //     userName: users[socket.id],
+  //   });
+  //   delete users[socket.id];
+  // });
+  socket.on("chat-message", (chat) => {
+    socket.broadcast.emit("receive-message", chat);
   });
-  socket.on("disconnect", (message) => {
-    socket.broadcast.emit("leave", {
-      message: message,
-      userName: users[socket.id],
-    });
-    delete users[socket.id];
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
   });
+});
+
+http.listen(4000, () => {
+  console.log("listeniing on port  4000");
 });

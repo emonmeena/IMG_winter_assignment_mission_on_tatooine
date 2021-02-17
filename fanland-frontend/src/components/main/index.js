@@ -32,9 +32,11 @@ const routes = [
   },
   {
     path: "/clubs/:id",
-    main: () => <ClubChatRoom />,
+    main: () => <ClubChatRoom userName={promptedName} />,
   },
 ];
+
+const promptedName = prompt("naam de");
 
 export default function Main() {
   return (
