@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./index.css";
 import Club from "./club/club";
+import ClubPage from "./clubpage";
 import ClubChatRoom from "./clubchatroom";
+import CreateFanClub from "./createFanClub";
 
 const routes = [
   {
@@ -31,8 +33,16 @@ const routes = [
     main: () => <h2>Your admin clubs</h2>,
   },
   {
-    path: "/clubs/:id",
-    main: () => <ClubChatRoom />,
+    path: "/clubs/:clubId",
+    main: () => <ClubPage />,
+  },
+  {
+    path: "/chats/:chatRoomId",
+    main: () => <ClubChatRoom userName={"Mayank"} />,
+  },
+  {
+    path: "/create/fanclub",
+    main: () => <CreateFanClub />,
   },
 ];
 
@@ -47,19 +57,28 @@ export default function Main() {
           <nav> this is nav babes</nav>
         </div>
         <div className="container-fluid">
-          <div className="row">
+          <div className="row" style={{ height: "95vh" }}>
             <div className="col-1 bg-color-secondary">
-              <ul style={{ listStyleType: "none", padding: 0 }}>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/explore">Explore</Link>
-                </li>
-                <li>
-                  <Link to="/user_admin_clubs">Your clubs</Link>
-                </li>
-              </ul>
+              <div>
+                <ul style={{ listStyleType: "none", padding: 0 }}>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/explore">Explore</Link>
+                  </li>
+                  <li>
+                    <Link to="/user_admin_clubs">Your clubs</Link>
+                  </li>
+                </ul>
+              </div>
+              <div></div>
+              <h6>Recent Activies</h6>
+              <div>
+                <Link to="/create/fanclub">
+                  <button>Create Fanclub</button>
+                </Link>
+              </div>
             </div>
 
             <div className="col-10 bg-color-primary">
@@ -89,5 +108,19 @@ const data = [
     image:
       "http://sportofboxing.com/wp-content/uploads/2012/06/Challenging-Julius-Ballo-for-the-biggest-fan-club-is-Armando-Guerrero-500x320.jpg",
     id: "dark_knights",
+  },
+  {
+    name: "The MIB Force",
+    des: "The description of this club appear here.",
+    image:
+      "http://sportofboxing.com/wp-content/uploads/2012/06/Challenging-Julius-Ballo-for-the-biggest-fan-club-is-Armando-Guerrero-500x320.jpg",
+    id: "the_mib_force",
+  },
+  {
+    name: "Andhadhun baatein",
+    des: "The description of this club appear here.",
+    image:
+      "https://static.toiimg.com/thumb/msid-65705780,imgsize-105691,width-800,height-600,resizemode-75/65705780.jpg",
+    id: "andhadhun_baatein",
   },
 ];
