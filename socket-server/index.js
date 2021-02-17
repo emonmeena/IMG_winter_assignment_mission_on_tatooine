@@ -5,7 +5,6 @@ const io = require("socket.io")(http, {
     origin: "*",
   },
 });
-const users = {};
 
 io.on("connection", (socket) => {
   // socket.on("new-user-joined", (userName) => {
@@ -26,14 +25,23 @@ io.on("connection", (socket) => {
   //   });
   //   delete users[socket.id];
   // });
+  let chatRoomId = "";
+  socket.on("user-active", (activeUser) => {
+    chatRoomId = activeUser.chatRoomId;
+    // console.log(chatRoomId);
+    socket.join(chatRoomId);
+    socket.broadcast.to(chatRoomId).emit("user-online", activeUser);
+  });
+
   socket.on("chat-message", (chat) => {
-    socket.broadcast.emit("receive-message", chat);
+    // console.log(chatRoomId);
+    socket.broadcast.to(chatRoomId).emit("receive-message", chat);
   });
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    // console.log("user disconnected");
   });
 });
 
 http.listen(4000, () => {
-  console.log("listeniing on port  4000");
+  // console.log("listeniing on port  4000");
 });
