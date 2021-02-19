@@ -12,7 +12,6 @@ export default function ClubChatRoom({ userName }) {
   const [message, setMessage] = useState("");
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
-  const messageContainer = document.getElementById("message-container");
 
   const textChange = (e) => {
     setMessage(e.target.value);
@@ -32,6 +31,7 @@ export default function ClubChatRoom({ userName }) {
   };
 
   useEffect(() => {
+    const messageContainer = document.getElementById("message-container");
     if (loading) {
       socket.emit("user-active", {
         userName: userName,
@@ -42,7 +42,11 @@ export default function ClubChatRoom({ userName }) {
     }
 
     socket.on("user-online", (activeUser) => {
-      console.log(activeUser.userName, " is online on chatRoom ", activeUser.chatRoomId);
+      console.log(
+        activeUser.userName,
+        " is online on chatRoom ",
+        activeUser.chatRoomId
+      );
       setOnlineUsers([...onlineUsers, activeUser.userName]);
       // to be updated
     });
@@ -52,7 +56,7 @@ export default function ClubChatRoom({ userName }) {
     });
     if (messageContainer)
       messageContainer.scrollTo(0, messageContainer.scrollHeight);
-  }, [chatRoomId, chats, loading, messageContainer, userName, onlineUsers]);
+  }, [chatRoomId, chats, loading, userName, onlineUsers]);
 
   return !loading ? (
     <div className="container">
@@ -70,9 +74,7 @@ export default function ClubChatRoom({ userName }) {
             );
           })}
         </div>
-        <div className="col-2">
-          {/* {onlineUsers} complete soon */}
-        </div>
+        <div className="col-2">{/* {onlineUsers} complete soon */}</div>
       </div>
       <div>
         <form

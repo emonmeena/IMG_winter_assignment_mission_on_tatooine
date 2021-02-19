@@ -1,28 +1,31 @@
 import Main from "./components/main";
 import Auth from "./components/auth";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./index.css";
 
 function App() {
   return (
-    <Router>
-      {/* <div>
+    <div className="App">
+      <Router>
+        {/* <div>
         <nav>
-          <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
+        <ul>
+        <li>
+        <Link to="/login">Login</Link>
+        </li>
+        </ul>
         </nav>
       </div> */}
-      <Switch>
-        <Route path="/auth">
-          <Auth />
-        </Route>
-        <Route exact path="/">
-          <Main />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route path="/auth">
+            <Auth />
+          </Route>
+          <Route exact path="/">
+            <Main />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

@@ -1,7 +1,12 @@
 .club-layout{
-    height: 230px;
+    height: fit-content;
+    height: 200px;
     width: 230px;
 }
+.club-layout:hover{
+    cursor:default;
+}
+
 .small-text{
     font-size: 14px;
 }
