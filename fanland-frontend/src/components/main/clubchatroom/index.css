@@ -1,19 +1,30 @@
-.message-container{
-    height: 90vh;
-    width: 70vw;
-    overflow-y: auto;
-    display: inline-block;
+.chat-box {
+  height: 85vh;
+  /* display: inline-block; */
 }
-.message-box{
-background-color: grey;
-/* min-width: fit-content; */
-max-width: 400px;
-clear: both;
-margin-bottom: 10px;
+
+.message-box:hover {
+  background-color: rgb(58, 58, 58);
 }
-.send{
-    float: right;
+.container {
+  width: 70vw;
 }
-.receive{
-    float: left;
+
+.send {
+  float: right;
+}
+.receive {
+  float: left;
+}
+
+.message-input {
+  background-color: rgb(16, 16, 16);
+  color: aliceblue;
+}
+.message-input:enabled {
+  background-color: rgb(16, 16, 16);
+}
+
+.participants-container{
+    height: 94vh;
 }
