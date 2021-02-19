@@ -77,7 +77,10 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
       <div className="row">
         <div className="col-10">
           <div className="bg-color-tertiary p-2 mx-2 mt-3"> nnkn</div>
-          <div className="overflow-auto px-1 chat-box bg-color-secondary mx-2" id="message-container">
+          <div
+            className="overflow-auto px-1 chat-box bg-color-primary mx-2"
+            id="message-container"
+          >
             {chats.map((chat, index) => {
               // let type = chat.author === userName ? "send" : "receive";
               return (
@@ -91,8 +94,11 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
                   />
                   <p className="fs-smaller px-3">
                     <Link className="link link-hover-underline">
-                      <span className="fw-bolder text-white fs-medium">{chat.author}</span>
+                      <span className="fw-bolder text-white fs-medium">
+                        {chat.author}
+                      </span>
                     </Link>
+                    <span className="fs-smallest px-2"> Today, 6 PM</span>
                     <br />
                     {chat.message}
                   </p>
@@ -102,7 +108,7 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
           </div>
           <div className="m-2">
             <form action="#" onSubmit={onFormSubmit} id="send-container">
-              <div className="d-flex bg-color-secondary px-2 py-1">
+              <div className="d-flex bg-color-secondary px-2 pt-1">
                 <button className="bg-color-secondary border-0">
                   <i class="fas fa-photo-video text-white"></i>
                 </button>
@@ -116,6 +122,59 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
                 />
               </div>
             </form>
+          </div>
+        </div>
+        <div className="participants-container col-2 bg-color-secondary border-right custom-border-right mt-3 overflow-auto pt-2 px-4">
+          <div className="custom-border-bottom">
+            <p className="fs-small py-1">Online</p>
+          </div>
+          <div className="pt-3">
+            {chatsData.map((item) => {
+              return (
+                <div className="d-flex py-2">
+                  <img
+                    src={
+                      "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
+                    }
+                    alt="Profile"
+                    height="30"
+                    style={{ borderRadius: "50%" }}
+                    className=""
+                  />
+                  <p className="fs-smaller px-2 pt-1">
+                    <Link className="link link-hover-underline text-white">
+                      MiyMaayami
+                    </Link>
+                    <span className="fs-smallest px-2"> 1 hour</span>
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="custom-border-bottom">
+            <p className="fs-small py-1 text-white">Participants</p>
+          </div>
+          <div className="pt-3">
+            {chatsData.map((item) => {
+              return (
+                <div className="d-flex py-2">
+                  <img
+                    src={
+                      "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
+                    }
+                    alt="Profile"
+                    height="30"
+                    style={{ borderRadius: "50%" }}
+                    className=""
+                  />
+                  <p className="fs-smaller px-2 pt-1">
+                    <Link className="link link-hover-underline text-white">
+                      MiyMaayami
+                    </Link>
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -24,3 +24,7 @@
 .message-input:enabled {
   background-color: rgb(16, 16, 16);
 }
+
+.participants-container{
+    height: 94vh;
+}

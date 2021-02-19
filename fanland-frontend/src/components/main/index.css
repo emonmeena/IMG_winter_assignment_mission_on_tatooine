@@ -39,15 +39,21 @@ p:hover {
   font-size: 15px;
 }
 
-.fs-smaller{
+.fs-smallest {
+  color: #7a7a7a;
+  font-size: 10px;
+}
+
+.fs-smaller {
   font-size: smaller;
 }
 
 .fs-small {
   font-size: 15px;
+  color: rgb(138, 255, 138);
 }
 
-.fs-medium{
+.fs-medium {
   font-size: 18px;
 }
 
@@ -79,7 +85,12 @@ p:hover {
 .custom-border-top {
   border-top: solid #535353 1px;
 }
-
+.custom-border-right {
+  border-right: solid #535353 1px;
+}
+.custom-border-bottom {
+  border-bottom: solid #535353 1px;
+}
 /* col-2 */
 .icon-style-2 {
   color: #535353;
@@ -94,10 +105,9 @@ p:hover {
   color: rgb(223, 219, 219);
 }
 
-.link-hover-underline:hover{
+.link-hover-underline:hover {
   text-decoration: underline;
 }
-
 
 nav {
   height: 5vh;
