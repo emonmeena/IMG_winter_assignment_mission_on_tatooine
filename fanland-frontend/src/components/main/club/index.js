@@ -5,14 +5,11 @@ import "./club.css";
 export default function Club({ imageurl, clubName, clubDes, clubId }) {
   return (
     <div className="club-layout my-2">
-      <Link to={`/clubs/${clubId}`} className="club-layout" >
+      <Link to={`/clubs/${clubId}`} className="club-layout">
         <div
+          className="club-image-div"
           style={{
             backgroundImage: `url(${imageurl})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100%",
           }}
         ></div>
       </Link>

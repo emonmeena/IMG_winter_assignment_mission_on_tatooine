@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import "./index.css";
 import ClubPage from "./clubpage";
 import ClubChatRoom from "./clubchatroom";
@@ -10,11 +16,13 @@ const routes = [
   {
     path: "/",
     exact: true,
-    main: () => <Home />,
+    main: () => <Home title="Home" endpoint="#" tags={["Followed by You"]} />,
   },
   {
     path: "/explore",
-    main: () => <h2>Explore</h2>,
+    main: () => (
+      <Home title="Explore" endpoint="#" tags={["Recomended"]} />
+    ),
   },
   {
     path: "/user_admin_clubs",
@@ -26,7 +34,7 @@ const routes = [
   },
   {
     path: "/chats/:chatRoomId",
-    main: () => <ClubChatRoom userName={"Mayank"} />,
+    main: () => <ClubChatRoom userName={"Mayank"} userProfilePic={"https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"} />,
   },
   {
     path: "/create/fanclub",
@@ -35,6 +43,7 @@ const routes = [
 ];
 
 export default function Main() {
+  const history = useHistory();
   return (
     <Router>
       <div
@@ -43,6 +52,7 @@ export default function Main() {
       >
         <div className="container-fluid">
           <div className="row" style={{ height: "100vh" }}>
+            {/* Column 1 */}
             <div className="col-1 bg-color-secondary p-0">
               <div className="py-3">
                 <div className="px-3 mb-3">
@@ -52,7 +62,11 @@ export default function Main() {
                   </Link>
                 </div>
                 <div className="px-3 mb-3">
-                  <Link to="/explore" className="link">
+                  <Link
+                    to="/explore"
+                    className="link"
+                    
+                  >
                     <i className="far fa-compass icon-style"></i> Explore
                   </Link>
                 </div>
@@ -61,9 +75,14 @@ export default function Main() {
                 <div>
                   <p>Fan Clubs</p>
                 </div>
-                <div>
+                <div className="my-1">
                   <Link to="#" className="link fw-bold">
                     Made by You
+                  </Link>
+                </div>
+                <div className="my-1">
+                  <Link to="#" className="link fw-bold">
+                    Recent
                   </Link>
                 </div>
                 <div>
@@ -79,21 +98,27 @@ export default function Main() {
                 </Link>
               </div>
             </div>
-
+            {/* Column 2 */}
             <div className="col-10 bg-color-primary">
               <div className="d-flex justify-content-between px-1 py-2">
                 <div className="d-flex">
-                  <div>
-                    <button className="bg-color-primary border-0">
-                      <i class="fas fa-angle-left icon-style-2"></i>
+                  <div className="py-1">
+                    <button
+                      className="bg-color-primary border-0"
+                      onClick={() => history.goBack()}
+                    >
+                      <i class="fas fa-chevron-left icon-style-2"></i>
                     </button>
-                    <button className="bg-color-primary border-0">
-                      <i class="fas fa-angle-right icon-style-2"></i>
+                    <button className="bg-color-primary border-0"
+                      onClick={() => history.goForward()}
+                    
+                    >
+                      <i class="fas fa-chevron-right icon-style-2"></i>
                     </button>
                   </div>
                   <div className="mx-4">
                     <button
-                      className="border-0 fs-small"
+                      className="border-0 fs-small mt-1 btn-hover-stop"
                       style={{
                         borderTopLeftRadius: "10px",
                         borderBottomLeftRadius: "10px",
@@ -116,7 +141,7 @@ export default function Main() {
                 <div className="d-flex px-3">
                   <img
                     src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
-                    alt="W3Schools.com"
+                    alt="Profile"
                     height="30"
                     style={{ borderRadius: "50%" }}
                     className="mx-2"
@@ -125,7 +150,7 @@ export default function Main() {
                     <p className="pt-1 px-1">Maayami</p>
                   </Link>
                   <button className="pt-1 px-2 bg-color-primary border-0">
-                    <i className="fas fa-angle-down icon-style-2"></i>
+                    <i className="fas fa-chevron-down icon-style-2"></i>
                   </button>
                 </div>
                 {/* incomplete */}

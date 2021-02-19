@@ -16,9 +16,11 @@
 
 button:hover {
   cursor: default;
-  background-color: white;
 }
 
+.btn-hover-stop:hover {
+  background-color: white;
+}
 /* Fonts */
 p {
   margin-bottom: 0;
@@ -37,8 +39,16 @@ p:hover {
   font-size: 15px;
 }
 
+.fs-smaller{
+  font-size: smaller;
+}
+
 .fs-small {
   font-size: 15px;
+}
+
+.fs-medium{
+  font-size: 18px;
 }
 
 .fs-large {
@@ -84,6 +94,11 @@ p:hover {
   color: rgb(223, 219, 219);
 }
 
+.link-hover-underline:hover{
+  text-decoration: underline;
+}
+
+
 nav {
   height: 5vh;
 }
@@ -112,7 +127,7 @@ button:hover {
   background-color: rgb(16, 16, 16);
 }
 .bg-color-tertiary {
-  background-color: #535353;
+  background-color: #303030;
 }
 .bg-color-light {
   background-color: #b3b3b3;
