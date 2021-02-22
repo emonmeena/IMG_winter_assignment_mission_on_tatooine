@@ -1,31 +1,49 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Main from "./components/main";
 import Auth from "./components/auth";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
+import { ProvideAuth, useAuth } from "./components/auth/useAuth";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <Router>
-        {/* <div>
-        <nav>
-        <ul>
-        <li>
-        <Link to="/login">Login</Link>
-        </li>
-        </ul>
-        </nav>
-      </div> */}
-        <Switch>
-          <Route path="/auth">
-            <Auth />
-          </Route>
-          <Route exact path="/">
-            <Main />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <ProvideAuth>
+      <>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/main" />
+            </Route>
+            <PrivateRoute path="/main">
+              <Main />
+            </PrivateRoute>
+            <Route to="/auth">
+              <Auth />
+            </Route>
+          </Switch>
+        </Router>
+      </>
+    </ProvideAuth>
+  );
+}
+
+function PrivateRoute({ children, ...rest }) {
+  let auth = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        return auth.user ? (
+          children
+        ) : (
+          <Redirect to={{ pathname: "/auth", state: { from: location } }} />
+        );
+      }}
+    ></Route>
   );
 }
 
