@@ -16,9 +16,9 @@ function App(props) {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Redirect to="/main" />
+              <Redirect to="/app" />
             </Route>
-            <PrivateRoute path="/main">
+            <PrivateRoute path="/app">
               <Main />
             </PrivateRoute>
             <Route to="/auth">
