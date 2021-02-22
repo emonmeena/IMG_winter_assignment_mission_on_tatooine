@@ -1,5 +1,5 @@
 .chat-box {
-  height: 85vh;
+  height: 83vh;
   /* display: inline-block; */
 }
 
@@ -25,6 +25,23 @@
   background-color: rgb(16, 16, 16);
 }
 
-.participants-container{
-    height: 94vh;
+.participants-container {
+  height: 87vh;
+}
+
+.dot{
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  bottom: -12px;
+}
+
+.dot-active {
+  background-color: green;
+}
+.dot-not-active{
+  background-color: rgb(165, 5, 5);
 }

@@ -124,54 +124,33 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
             </form>
           </div>
         </div>
-        <div className="participants-container col-2 bg-color-secondary border-right custom-border-right mt-3 overflow-auto pt-2 px-4">
+        <div className=" col-2 bg-color-secondary border-right custom-border-right mt-3  pt-2 px-4">
           <div className="custom-border-bottom">
-            <p className="fs-small py-1">Online</p>
+            <p className="fs-small py-1">Members</p>
           </div>
-          <div className="pt-3">
+          <div className="pt-3 participants-container overflow-auto">
             {chatsData.map((item) => {
               return (
                 <div className="d-flex py-2">
-                  <img
-                    src={
-                      "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
-                    }
-                    alt="Profile"
-                    height="30"
-                    style={{ borderRadius: "50%" }}
-                    className=""
-                  />
-                  <p className="fs-smaller px-2 pt-1">
-                    <Link className="link link-hover-underline text-white">
-                      MiyMaayami
-                    </Link>
-                    <span className="fs-smallest px-2"> 1 hour</span>
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-          <div className="custom-border-bottom">
-            <p className="fs-small py-1 text-white">Participants</p>
-          </div>
-          <div className="pt-3">
-            {chatsData.map((item) => {
-              return (
-                <div className="d-flex py-2">
-                  <img
-                    src={
-                      "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
-                    }
-                    alt="Profile"
-                    height="30"
-                    style={{ borderRadius: "50%" }}
-                    className=""
-                  />
-                  <p className="fs-smaller px-2 pt-1">
-                    <Link className="link link-hover-underline text-white">
-                      MiyMaayami
-                    </Link>
-                  </p>
+                  <div>
+                    <img
+                      src={
+                        "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
+                      }
+                      alt="Profile"
+                      height="30"
+                      style={{ borderRadius: "50%" }}
+                    />
+                    <span class="dot dot-active"></span>
+                  </div>
+                  <div>
+                    <p className="fs-smaller px-2 pt-1">
+                      <Link className="link link-hover-underline text-white">
+                        MiyMaayami
+                      </Link>
+                      <span className="fs-smallest px-2"> 1 hour</span>
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -187,6 +166,51 @@ export default function ClubChatRoom({ userName, userProfilePic }) {
 }
 
 const chatsData = [
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
+  {
+    authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
+    author: "Mayank",
+    message: "This message was sent by you!!",
+  },
   {
     authorImage: "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png",
     author: "Mayank",

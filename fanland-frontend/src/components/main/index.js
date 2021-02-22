@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useHistory,
+  Redirect,
+  useRouteMatch,
 } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
 import "./index.css";
 import ClubPage from "./clubpage";
 import ClubChatRoom from "./clubchatroom";
@@ -14,15 +17,13 @@ import Home from "./home";
 
 const routes = [
   {
-    path: "/",
+    path: "",
     exact: true,
     main: () => <Home title="Home" endpoint="#" tags={["Followed by You"]} />,
   },
   {
     path: "/explore",
-    main: () => (
-      <Home title="Explore" endpoint="#" tags={["Recomended"]} />
-    ),
+    main: () => <Home title="Explore" endpoint="#" tags={["Recomended"]} />,
   },
   {
     path: "/user_admin_clubs",
@@ -34,7 +35,14 @@ const routes = [
   },
   {
     path: "/chats/:chatRoomId",
-    main: () => <ClubChatRoom userName={"Mayank"} userProfilePic={"https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"} />,
+    main: () => (
+      <ClubChatRoom
+        userName={"Mayank"}
+        userProfilePic={
+          "https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
+        }
+      />
+    ),
   },
   {
     path: "/create/fanclub",
@@ -42,7 +50,10 @@ const routes = [
   },
 ];
 
-export default function Main() {
+export default function Main({ isUserLoggedIn }) {
+  let { path, url } = useRouteMatch();
+  useEffect(() => {}, []);
+
   const history = useHistory();
   return (
     <Router>
@@ -56,17 +67,13 @@ export default function Main() {
             <div className="col-1 bg-color-secondary p-0">
               <div className="py-3">
                 <div className="px-3 mb-3">
-                  <Link to="/" className="link">
+                  <Link to={url} className="link">
                     <i className="fas fa-home icon-style"></i>
                     Home
                   </Link>
                 </div>
                 <div className="px-3 mb-3">
-                  <Link
-                    to="/explore"
-                    className="link"
-                    
-                  >
+                  <Link to={`${url}/explore`} className="link">
                     <i className="far fa-compass icon-style"></i> Explore
                   </Link>
                 </div>
@@ -83,6 +90,11 @@ export default function Main() {
                 <div className="my-1">
                   <Link to="#" className="link fw-bold">
                     Recent
+                  </Link>
+                </div>
+                <div className="my-1">
+                  <Link to="#" className="link fw-bold">
+                    Starred
                   </Link>
                 </div>
                 <div>
@@ -109,9 +121,9 @@ export default function Main() {
                     >
                       <i class="fas fa-chevron-left icon-style-2"></i>
                     </button>
-                    <button className="bg-color-primary border-0"
+                    <button
+                      className="bg-color-primary border-0"
                       onClick={() => history.goForward()}
-                    
                     >
                       <i class="fas fa-chevron-right icon-style-2"></i>
                     </button>
@@ -159,7 +171,7 @@ export default function Main() {
                 {routes.map((route, index) => (
                   <Route
                     key={index}
-                    path={route.path}
+                    path={path+route.path}
                     exact={route.exact}
                     children={<route.main />}
                   />
